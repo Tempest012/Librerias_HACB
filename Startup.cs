@@ -1,4 +1,5 @@
 using Librerias_HACB.Data;
+using Librerias_HACB.Data.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -35,6 +36,9 @@ namespace Librerias_HACB
             services.AddControllers();
             //Configurar Dbcontext con SQL
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(ConnectionString));
+
+            //Configurar el servicios para que pueda ser usado
+            services.AddTransient<BooksService>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Librerias_HACB", Version = "v1" });
