@@ -15,6 +15,18 @@ namespace Librerias_HACB.Controllers
         {
             _booksService = booksService;
         }
+        [HttpGet("get-all-books")]
+        public IActionResult GetAllBooks()
+        {
+            var allbooks= _booksService.GetAllBks();
+            return Ok(allbooks);
+        }
+        [HttpGet("get-book-by-id/{id}")]
+        public IActionResult GetBookById(int id)
+        {
+            var book=_booksService.GetBookById(id);
+            return Ok(book);
+        }
 
         [HttpPost("add-book")]
         public IActionResult AddBook([FromBody]BookVM book)
