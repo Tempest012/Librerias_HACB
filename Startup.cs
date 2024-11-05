@@ -61,6 +61,7 @@ namespace Librerias_HACB
             {
                 endpoints.MapControllers();
             });
+            AppDbInitializer.Seed(app);
         }
     }
 }
