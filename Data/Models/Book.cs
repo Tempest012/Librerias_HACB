@@ -14,5 +14,9 @@ namespace Librerias_HACB.Data.Models
         public string Autor { get; set; }
         public string CoverUrl { get; set; }
         public DateTime DateAddes { get; set; }
+
+        //Propiedades de navegación
+        public int PublisherID {  get; set; }
+        public Publisher Publisher { get; set; }
     }
 }
