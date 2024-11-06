@@ -39,13 +39,13 @@ namespace Librerias_HACB.Data.Services
         //Método que nos permite modificar un libro que se encuentra en la BD
         public Book UpdateBookByID(int bookid, BookVM book)
         {
-            var _book= _context.Books.FirstOrDefault(n => n.id ==bookid);
+            var _book = _context.Books.FirstOrDefault(n => n.id == bookid);
             if (_book != null)
             {
                 _book.Titulo = book.Titulo;
-                _book.Descripcion= book.Descripcion;
+                _book.Descripcion = book.Descripcion;
                 _book.IsRead = book.IsRead;
-                _book.DateRead= book.DateRead;
+                _book.DateRead = book.DateRead;
                 _book.Rate = book.Rate;
                 _book.Genero = book.Genero;
                 _book.Autor = book.Autor;
@@ -54,6 +54,16 @@ namespace Librerias_HACB.Data.Services
                 _context.SaveChanges();
             }
             return _book;
+        }
+        //Método que nos permite eliminar un libro de la BD
+        public void DeleteBookById(int bookid)
+        {
+            var _book= _context.Books.FirstOrDefault(n=>n.id == bookid);
+            if(_book != null)
+            {
+                _context.Books.Remove(_book);
+                _context.SaveChanges();
+            }
         }
     }
 }
