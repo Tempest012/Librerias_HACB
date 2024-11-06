@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Librerias_HACB.Data.Models
 {
@@ -15,8 +16,9 @@ namespace Librerias_HACB.Data.Models
         public string CoverUrl { get; set; }
         public DateTime DateAddes { get; set; }
 
-        //Propiedades de navegación
+        //Propiedades de navegación (en esta parte es donde especificamos las relaciones)
         public int PublisherID {  get; set; }
         public Publisher Publisher { get; set; }
+        public List<Book_Author> Book_Authors { get; set; }
     }
 }
