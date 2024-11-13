@@ -39,6 +39,8 @@ namespace Librerias_HACB
 
             //Configurar el servicios para que pueda ser usado
             services.AddTransient<BooksService>();
+            services.AddTransient<AuthorsService>();
+            services.AddTransient<PublishersService>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Librerias_HACB", Version = "v1" });
@@ -65,7 +67,7 @@ namespace Librerias_HACB
             {
                 endpoints.MapControllers();
             });
-            AppDbInitializer.Seed(app);
+            //AppDbInitializer.Seed(app);
         }
     }
 }
