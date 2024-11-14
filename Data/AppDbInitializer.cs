@@ -25,7 +25,6 @@ namespace Librerias_HACB.Data
                         DateRead=DateTime.Now.AddDays(-10),
                         Rate=4,
                         Genero="Biography",
-                        Autor="1st Author",
                         CoverUrl="https...",
                         DateAddes=DateTime.Now,
                     },
@@ -37,7 +36,6 @@ namespace Librerias_HACB.Data
                         DateRead = DateTime.Now.AddDays(-10),
                         Rate = 4,
                         Genero = "Biography",
-                        Autor = "2nd Author",
                         CoverUrl = "https...",
                         DateAddes = DateTime.Now,
                     });
