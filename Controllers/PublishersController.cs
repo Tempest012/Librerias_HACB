@@ -17,9 +17,24 @@ namespace Librerias_HACB.Controllers
         [HttpPost("add-publisher")]
         public IActionResult AddPublishers([FromBody] PublisherVM publisher)
         {
-            _publishersService.AddPublisher(publisher);
-            return Ok();
+            var newPublisher = _publishersService.AddPublisher(publisher);
+            return Created(nameof(AddPublishers) ,newPublisher);
         }
+        
+        [HttpGet("get-publisher-by-id/{id}")]
+        public IActionResult GetPublisherById(int id)
+        {
+            var _response = _publishersService.GetPublisherByID(id);
+            if(_response != null)
+            {
+                return Ok(_response);
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
         [HttpGet("get-publisher-book-with-authors/{id}")]
         public IActionResult GetPublisherData(int id)
         {

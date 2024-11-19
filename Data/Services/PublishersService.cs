@@ -12,7 +12,7 @@ namespace Librerias_HACB.Data.Services
             _context = context;
         }
         //Método que nos permite agregar un nuevo Editora en la BD
-        public void AddPublisher(PublisherVM publisher)
+        public Publisher AddPublisher(PublisherVM publisher)
         {
             var _publisher = new Publisher()
             {
@@ -20,7 +20,11 @@ namespace Librerias_HACB.Data.Services
             };
             _context.Publishers.Add(_publisher);
             _context.SaveChanges();
+
+            return _publisher;
         }
+
+        public Publisher GetPublisherByID(int id) => _context.Publishers.FirstOrDefault(n => n.Id == id);
         public PublisherWithBooksAndAuthorsVM GetPublisherData(int publisherId)
         {
             var _publisherData = _context.Publishers.Where(n=>n.Id == publisherId)
