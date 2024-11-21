@@ -1,5 +1,6 @@
 ﻿using Librerias_HACB.Data.Services;
 using Librerias_HACB.Data.ViewModels;
+using Librerias_HACB.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -22,6 +23,10 @@ namespace Librerias_HACB.Controllers
             {
                 var newPublisher = _publishersService.AddPublisher(publisher);
                 return Created(nameof(AddPublishers), newPublisher);
+            }
+            catch(PublisherNameException ex)
+            {
+                return BadRequest($"{ex.Message}, Nombre de la editora: {ex.PublisherName}");
             }
             catch (Exception ex)
             {
