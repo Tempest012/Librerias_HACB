@@ -2,6 +2,7 @@
 using Librerias_HACB.Data.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace Librerias_HACB.Controllers
 {
@@ -17,8 +18,15 @@ namespace Librerias_HACB.Controllers
         [HttpPost("add-publisher")]
         public IActionResult AddPublishers([FromBody] PublisherVM publisher)
         {
-            var newPublisher = _publishersService.AddPublisher(publisher);
-            return Created(nameof(AddPublishers) ,newPublisher);
+            try
+            {
+                var newPublisher = _publishersService.AddPublisher(publisher);
+                return Created(nameof(AddPublishers), newPublisher);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
         
         [HttpGet("get-publisher-by-id/{id}")]
@@ -45,8 +53,16 @@ namespace Librerias_HACB.Controllers
         [HttpDelete("delete-publisher-by-id/{id}")]
         public IActionResult DeletePublisherById(int id)
         { 
-            _publishersService.DeletePublisherById(id);
-            return Ok();
+            try
+            {
+                _publishersService.DeletePublisherById(id);
+                return Ok();
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            
         }
     }
 
